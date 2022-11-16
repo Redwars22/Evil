@@ -1,0 +1,2 @@
+$EVIL_COMMAND = "evil -$: "
+$EVIL_WELCOME = "Welcome to Evil, a scripting language that lets you write CSS in a less painful way.\nJust type in the name of an Evil file with the .evil extension to convert it to CSS."
