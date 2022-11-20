@@ -14,6 +14,21 @@ def parseEvil(content)
             code[line] = "\t" + attribute + ";"
         end
 
+        if code[line].match($VAR_DECL) then
+            tokens = code[line].split(' ')
+            identifier = tokens[0]
+            value = tokens[1]
+
+            if value.match($VAR_RETRIEVE) then
+                value[$VAR] = ""
+                value = $CSS_VAR_FUNC + value + ")"
+            end
+
+            identifier[$VAR] = ""
+
+            code[line] = $CSS_VAR + identifier + ": " + value + ";"
+        end
+
         if code[line] == "\n" then
             code[line] = $CSS_RIGHT_BRACKET + "\n\n"
         end
