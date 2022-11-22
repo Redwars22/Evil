@@ -10,6 +10,7 @@ def generateCSSOutput(filename, content)
     line = 0
 
     while line < content.length do
+        puts(content[line])
         file.puts(content[line])
         line += 1
     end

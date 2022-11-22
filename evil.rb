@@ -7,9 +7,10 @@ def Evil()
     command = ""
     filename = ""
 
+    puts $EVIL_HEADER
     puts $EVIL_WELCOME
 
-    while command != "exit" do
+    while command.strip() != "exit" do
         print $EVIL_COMMAND
         command = gets
 
@@ -17,6 +18,9 @@ def Evil()
             content = getSourceFromFile(command.strip)
 
             generateCSSOutput(command.strip, parseEvil(content))
+        end
+
+        if(command.match($MAKE_CSS)) then
         end
     end
 end

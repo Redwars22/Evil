@@ -1,2 +1,9 @@
-$EVIL_COMMAND = "evil -$: "
-$EVIL_WELCOME = "Welcome to Evil, a scripting language that lets you write CSS in a less painful way.\nJust type in the name of an Evil file with the .evil extension to convert it to CSS."
+$EVIL_COMMAND = "👿️ -$: "
+$EVIL_HEADER = "👿️ ----- E V I L ----- 👿️\n\n"
+$MAKE_CSS = "css"
+str1 = "+--------------------------------------------------------------------------------------+"
+str2 = "\n| Welcome to Evil, a scripting language that lets you write CSS in a less painful way. |"
+str3 = "\n| Just type in the name of an Evil file with the .evil extension to convert it to CSS. |"
+str4 = "\n| Or use the help command (not available in this version yet)                          |"
+str5 = "\n+--------------------------------------------------------------------------------------+\n\n"
+$EVIL_WELCOME = str1 + str2 + str3 + str4 + str5

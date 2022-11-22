@@ -1,6 +1,8 @@
 .button =>
+    @default-radius 17px
     background-color #fff
     color #000
+    border-radius @default-radius
 
 #button-smaller =>
     border-radius 5px
