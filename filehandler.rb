@@ -5,7 +5,7 @@ end
 
 def generateCSSOutput(filename, content)
     filename[".evil"] = ".css"
-    file = File.new(filename, "w")
+    file = File.new("css/" + filename, "w")
 
     line = 0
 

@@ -47,6 +47,10 @@ def parseLine(code, line)
                 statement[i] = $CSS_VAR_FUNC + statement[i].strip() + ")"
             end
 
+            if statement[i].strip() == "!" then
+                statement[i]["!"] = " !important"
+            end
+
             i = i + 1
         end
 

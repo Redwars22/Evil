@@ -1,11 +1,12 @@
-.button {
+.min-width {
+    .button {
 	--default-radius: 17px;
 	background-color: #fff;
-	color: #000;
+	color: #000 !important;
 	border-radius: var(--default-radius);
 }
 
-#button-smaller {
+    #button-smaller {
 	border-radius: 5px;
 	background-color: 'red';
 }
