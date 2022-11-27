@@ -4,3 +4,4 @@ $ATTRIBUTE = /.*[A-Za-z_\-] .*/
 $VAR_DECL = /@.*[A-Za-z_] .*/
 $VAR_RETRIEVE = /@.*[A-Za-z_]/
 $EMPTY_LINE = /.*[ ]/
+$MEDIA_QUERY = /\? \(.*[A-Za-z\-_]\) =>/

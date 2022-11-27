@@ -34,6 +34,16 @@ def parseLine(code, line)
         return
     end
 
+    if code[line].match($MEDIA_QUERY) then
+        code[line]["?"] = "@media"
+        code[line][$BLOCK_BEGIN] = $CSS_RIGHT_BRACKET
+        return
+    end
+
+    if code[line].strip().match("?") then
+        code[line]["?"] = $CSS_RIGHT_BRACKET
+    end
+
     if code[line].strip().match($ATTRIBUTE) and not code[line].strip().include?($BLOCK_BEGIN) then
         statement = code[line].split(' ')
         identifier = statement[0] + ": "

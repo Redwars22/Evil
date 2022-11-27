@@ -48,3 +48,33 @@ div =>
 ```
 
 You can and should comment your EvilCSS code when it gets larger and more complex. And, guess what, the way EvilCSS handles comments is similar to most programming languages you are probably familiar with: Just add two backslashes to the beginning of a comment. Those won't be present in the parsed CSS file, though, since they'll be completely ignored by the interpreter.
+
+# MEDIA QUERIES
+
+**Regular CSS**
+```css
+@media (max-width: 400px){
+  body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    width: var(--width);
+  }
+}
+```
+
+**EvilCSS**
+```python
+? (max-width: 400px) =>
+  body =>
+    display flex
+    flex-direction row
+    flex-wrap wrap
+
+  .container =>
+    width @width
+?
+```
