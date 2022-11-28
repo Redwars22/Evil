@@ -78,3 +78,27 @@ You can and should comment your EvilCSS code when it gets larger and more comple
     width @width
 ?
 ```
+
+# [✨ NEW!!!] MIXINS
+Mixins are blocks of code that can be reused anywhere in your code. You can declare a mixin by giving it a name and then putting its attributes inside square brackets. You can apply it to a component later by using the spread operator followed by the name of the mixin.
+
+```python
+my-mixin [
+    border-radius 25px
+    color #198981
+]
+
+? (min-width: 800px) =>
+    .button =>
+        ...my-mixin
+        @default-radius 17px
+        background-color #fff
+        color #000 !
+        border-radius @default-radius
+
+    #button-smaller =>
+        ...my-mixin
+        border-radius 5px
+        background-color 'red'
+?
+```
