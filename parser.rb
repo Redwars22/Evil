@@ -36,11 +36,11 @@ def parseLine(code, line)
 
     if code[line].match($MEDIA_QUERY) then
         code[line]["?"] = "@media"
-        code[line][$BLOCK_BEGIN] = $CSS_RIGHT_BRACKET
+        code[line][$BLOCK_BEGIN] = $CSS_LEFT_BRACKET
         return
     end
 
-    if code[line].strip().match("?") then
+    if code[line].strip() == "?" then
         code[line]["?"] = $CSS_RIGHT_BRACKET
     end
 

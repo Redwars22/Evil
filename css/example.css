@@ -1,12 +1,13 @@
-.min-width {
-    .button {
-	--default-radius: 17px;
-	background-color: #fff;
-	color: #000 !important;
-	border-radius: var(--default-radius);
-}
+@media (min-width: 800px) {
+	.button {
+		--default-radius: 17px;
+		background-color: #fff;
+		color: #000 !important;
+		border-radius: var(--default-radius);
+	}
 
-    #button-smaller {
-	border-radius: 5px;
-	background-color: 'red';
+	#button-smaller {
+		border-radius: 5px;
+		background-color: 'red';
+	}
 }
