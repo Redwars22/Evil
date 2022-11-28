@@ -2,17 +2,16 @@ require "./def.rb"
 require "./filehandler.rb"
 require "./grammar.rb"
 require "./parser.rb"
-require "colorize"
 
 def Evil()
     command = ""
     filename = ""
 
-    puts $EVIL_HEADER.red
-    puts $EVIL_WELCOME.red
+    puts $EVIL_HEADER
+    puts $EVIL_WELCOME
 
     while command.strip() != "exit" do
-        print $EVIL_COMMAND.red
+        print $EVIL_COMMAND
         command = gets
 
         if(command.match($EVIL_FILE)) then

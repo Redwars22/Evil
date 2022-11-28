@@ -5,3 +5,5 @@ $VAR_DECL = /@.*[A-Za-z_] .*/
 $VAR_RETRIEVE = /@.*[A-Za-z_]/
 $EMPTY_LINE = /.*[ ]/
 $MEDIA_QUERY = /\? \(.*[A-Za-z\-_]\) =>/
+$MIXIN_DECL = /.*[A-Za-z_] \[/
+$MIXIN_SPREAD = /\.\.\..*[A-Za-z_]/

@@ -1,5 +1,10 @@
 require "./operators.rb"
 
+$mixins = {}
+$isParsingMixin = false
+$currentMixinName = ""
+$currentMixinAttr = []
+
 def parseEvil(content)
     code = content
     line = 0
@@ -29,8 +34,70 @@ def parseLine(code, line)
         return
     end
 
-    if code[line] == "\n" or code[line].strip == ""then
+    if code[line] == "\n" or code[line].strip == "" and code[line + 1].match($SELECTOR_DEF) then
         code[line] = $CSS_RIGHT_BRACKET + "\n\n"
+        return
+    end
+
+    if code[line].match($MIXIN_SPREAD) then
+        identifier = code[line].strip()
+        identifier[$MIXIN_SPREAD_OP] = ""
+        code[line] = $mixins[identifier]
+        return
+    end
+
+    if code[line].match($MIXIN_DECL) then
+        identifier = code[line].strip
+        identifier[" " + $MIXIN_BEGIN] = ""
+        puts identifier
+        $isParsingMixin = true
+        $currentMixinName = identifier
+        return
+    end
+
+    if $isParsingMixin and not (code[line].strip() == $MIXIN_END) then
+        $currentMixinAttr.push(code[line].strip)
+        return
+    end
+
+    if code[line].strip() == $MIXIN_END then
+        $isParsingMixin = false
+
+        i = 0
+
+        while i < $currentMixinAttr.length do
+            statement = $currentMixinAttr[i].split(' ')
+            identifier = statement[0] + ": "
+            statement[0] = identifier
+    
+            token = 1
+    
+            while token < statement.length do
+                if statement[token].strip().match($VAR_RETRIEVE) then
+                    statement[token]["@"] = ""
+                    statement[token] = $CSS_VAR_FUNC + statement[token].strip() + ")"
+                end
+    
+                if statement[token].strip() == "!" then
+                    statement[token]["!"] = " !important"
+                end
+    
+                token = token + 1
+            end
+    
+            statement = statement.join('')
+            $currentMixinAttr[i] = "\t" + statement + ";"
+
+            i = i + 1
+        end
+
+        $mixins[$currentMixinName] = $currentMixinAttr
+
+        $currentMixinAttr = []
+        $currentMixinName = ""
+
+        puts $mixins
+
         return
     end
 
@@ -42,6 +109,7 @@ def parseLine(code, line)
 
     if code[line].strip() == "?" then
         code[line]["?"] = $CSS_RIGHT_BRACKET
+        return
     end
 
     if code[line].strip().match($ATTRIBUTE) and not code[line].strip().include?($BLOCK_BEGIN) then
@@ -66,5 +134,6 @@ def parseLine(code, line)
 
         statement = statement.join('')
         code[line] = "\t" + statement + ";"
+        return
     end
 end

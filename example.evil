@@ -1,11 +1,18 @@
+my-mixin [
+    border-radius 25px
+    color #198981
+]
+
 ? (min-width: 800px) =>
     .button =>
+        ...my-mixin
         @default-radius 17px
         background-color #fff
         color #000 !
         border-radius @default-radius
 
     #button-smaller =>
+        ...my-mixin
         border-radius 5px
         background-color 'red'
 ?
